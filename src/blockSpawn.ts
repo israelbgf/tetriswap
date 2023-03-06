@@ -31,11 +31,22 @@ function block(x = 0, y = 0,
 }
 
 function setupBlockSpawn(cursor: GameObjRaw & MergeComps<ZComp | PosComp | RectComp | OutlineComp | AreaComp | OpacityComp>) {
-    const ITERATIONS_HARD_LIMIT = 12
+    const ITERATIONS_HARD_LIMIT = 13
     let iterations = 0
 
     generateBlocksAndInvisiblePushLine()
     makeNewBlocksGraduallyPushTheExistingOnes()
+    setupHUD();
+
+    function setupHUD() {
+        const pushLineMask = k.add([
+            k.z(99),
+            k.pos(0, 600),
+            k.rect(6 * 40 + 6 * 2, 100),
+            k.color(k.Color.BLACK),
+        ]);
+
+    }
 
     function makeNewBlocksGraduallyPushTheExistingOnes() {
         k.loop(0.05, () => {
@@ -63,7 +74,7 @@ function setupBlockSpawn(cursor: GameObjRaw & MergeComps<ZComp | PosComp | RectC
 
         const pushLine = k.add([
             k.pos(0, 640),
-            k.rect(800, 10),
+            k.rect(6 * 40 + 6 * 2, 10),
             k.area(),
             k.color(k.Color.WHITE),
             k.body({isStatic: true}),
