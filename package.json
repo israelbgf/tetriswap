@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "esbuild main.ts --sourcemap --bundle --outfile=dist.js --watch --serve --servedir=."
+    "dev": "esbuild main.ts --sourcemap --bundle --outfile=dist/dist.js --watch --serve --servedir=dist"
   },
   "keywords": [],
   "author": "",

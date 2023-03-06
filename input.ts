@@ -1,18 +1,22 @@
-function setupUserInput(k) {
+import {k} from "./engineBootstrap";
+
+function setupUserInput() {
     const cursor = k.add([
+        k.z(100),
         k.pos(0, 80 * 7),
         k.rect(84, 40),
         k.outline(2, k.Color.WHITE),
         k.area({
-            offset: new Vec2(40, 20),
+            offset: new k.Vec2(40, 20),
             scale: 0.5
         }),
         k.opacity(0.50)
     ]);
 
     k.onKeyRelease('right', () => {
-        cursor.moveBy(42, 0)
+        cursor.moveBy(+42, 0)
     })
+
     k.onKeyRelease('left', () => {
         cursor.moveBy(-42, 0)
     })
@@ -40,12 +44,14 @@ function setupUserInput(k) {
         } else if (collisions.length == 1) {
             let [blockA] = collisions
             if (blockA.isLeft()) {
-                blockA.target.moveBy(+42)
+                blockA.target.moveBy(+42, 0)
             } else {
-                blockA.target.moveBy(-42)
+                blockA.target.moveBy(-42, 0)
             }
         }
     })
+
+    return cursor
 }
 
 export {setupUserInput};
