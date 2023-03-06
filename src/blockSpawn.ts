@@ -83,11 +83,12 @@ function setupBlockSpawn(cursor: GameObjRaw & MergeComps<ZComp | PosComp | RectC
 
         pushLine.onUpdate(() => {
             if (pushLine.pos.y <= 600) {
+                console.log(k.get("unready").length)
                 k.get("unready").forEach((item) => {
                     item.collisionIgnore = []
                     item.gravityScale = 1
                     item.color = item.originalColor
-                    // TODO: How remove tags in runtime?
+                    item.unuse("unready")
                 })
                 if (iterations < ITERATIONS_HARD_LIMIT) {
                     pushLine.destroy()
