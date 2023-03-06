@@ -1,6 +1,6 @@
 import {k} from "./engineBootstrap";
 
-function setupUserInput() {
+function setupPlayerInput() {
     const cursor = k.add([
         k.z(100),
         k.pos(0, 80 * 7),
@@ -54,4 +54,4 @@ function setupUserInput() {
     return cursor
 }
 
-export {setupUserInput};
+export {setupPlayerInput};
